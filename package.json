@@ -1,0 +1,14 @@
+{
+  "name": "@jtrim-ons/xlsx-accessibility-checker",
+  "main": "3c45b6f263fa88dc@822.js",
+  "version": "822.0.0",
+  "homepage": "https://observablehq.com/@jtrim-ons/xlsx-accessibility-checker",
+  "author": {
+    "name": "James Trimble's ONS work",
+    "url": "https://observablehq.com/@jtrim-ons"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}

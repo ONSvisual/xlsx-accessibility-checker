@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>XLSX Accessibility Checker</title>
+<link rel="stylesheet" type="text/css" href="./inspector.css">
+<style>
+    body {
+        font-family:Arial, Helvetica, sans-serif;
+    }
+
+    #container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    #second-section {
+        display: none;
+    }
+</style>
+<body>
+    <div id="container">
+        <div id="first-section"></div>
+        <div id="second-section"></div>    
+    </div>
+<script type="module">
+
+import define from "./index.js";
+import {Runtime, Library, Inspector} from "./runtime.js";
+
+const runtime = new Runtime();
+const inspect = Inspector.into(document.getElementById("first-section"));
+const inspect2 = Inspector.into(document.getElementById("second-section"));
+
+let stillShowing = true;
+let alwaysShow = true;
+const main = runtime.module(define, name => {
+    if (name == "start_of_appendix") stillShowing = false;
+    let firstSection = alwaysShow;
+    if (name == "file") alwaysShow = false;
+    return stillShowing ? (firstSection ? inspect() : inspect2()) : undefined;
+})
+//const main = runtime.module(define, Inspector.into(document.body));
+
+</script>
