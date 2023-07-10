@@ -477,12 +477,18 @@ async function _workbookHasFrozenContent(z)
   return false;
 }
 
+function fullFilename(filename) {
+  if (filename.startsWith('/'))
+    return filename.substring(1);
+  else
+    return 'xl/' + filename;
+}
 
 async function _sheetsWithHiddenContent(sheets,z)
 {
   let result = [];
   for (let sheet of sheets) {
-    let sheetFileName = "xl/" + sheet.filename;
+    let sheetFileName = fullFilename(sheet.filename);
     let xml = await z.file(sheetFileName).text();
     if (xml.includes('hidden="true"')) result.push(sheet);
   }
@@ -622,7 +628,7 @@ async function _heading1CellsInfo(parseXml,stylesXml,sheets,z)
 
   let result = [];
   for (let sheet of sheets) {
-    let sheetFileName = "xl/" + sheet.filename;
+    let sheetFileName = fullFilename(sheet.filename);
     if (z.filenames.includes(sheetFileName)) {
       let sheetDoc = parseXml(await z.file(sheetFileName).text());
       let hasA1Heading1 = false;
@@ -757,7 +763,7 @@ async function _activeCellsNotA1(sheets,z,parseXml)
 {
   let result = [];
   for (let sheet of sheets) {
-    let sheetFileName = "xl/" + sheet.filename;
+    let sheetFileName = fullFilename(sheet.filename);
     if (z.filenames.includes(sheetFileName)) {
       let sheetDoc = parseXml(await z.file(sheetFileName).text());
       let selections = sheetDoc.getElementsByTagName("selection");
@@ -789,7 +795,7 @@ async function _untitledHyperlinks(sheets,z,parseXml)
 {
   let result = [];
   for (let sheet of sheets) {
-    let sheetFileName = "xl/" + sheet.filename;
+    let sheetFileName = fullFilename(sheet.filename);
     if (z.filenames.includes(sheetFileName)) {
       let sheetDoc = parseXml(await z.file(sheetFileName).text());
       let hyperlinks = sheetDoc.getElementsByTagName("hyperlink");
