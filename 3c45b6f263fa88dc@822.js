@@ -1,11 +1,11 @@
 function _1(md){return(
-md`# XLSX Accessibility Checker
+md`# XLSX Accessibility Checker (Alpha)
 
 This is an attempt to check some of the rules in [this checklist for accessible spreadsheets](https://gss.civilservice.gov.uk/policy-store/making-spreadsheets-accessible-a-brief-checklist-of-the-basics/). It's not complete and may give some false positives and false negatives.
 
-To use the checker, click the button below to upload an XLSX file from your computer.
+To use the checker, click the button below to load an XLSX file from your computer.
 
-Contact: James Trimble`
+If you have any feedback on this tool, please contact [James Trimble](mailto:james.trimble@ons.gov.uk?subject=XLSX Accessibility Checker).`
 )}
 
 function _2(md){return(
