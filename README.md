@@ -2,7 +2,7 @@
 
 This is version of the accessibility checker, exported from Observable (https://observablehq.com/@jtrim-ons/xlsx-accessibility-checker).
 
-It can be run on a local web server.
+It can be run on a local web server, and is also available on [GitHub Pages](https://onsvisual.github.io/xlsx-accessibility-checker).
 
 ## Notes on how I've modified this after exporting from Observable
 
